@@ -15,7 +15,7 @@ class EmployeeCreate extends Component {
             value={this.props.name}
             onChangeText={text =>
               this.props.employeeUpdate({ prop: "name", value: text })
-            }
+            } //employeeUpdate is Defined in EmployeeActions.js
           />
         </CardSection>
         <CardSection>
@@ -29,7 +29,12 @@ class EmployeeCreate extends Component {
           />
         </CardSection>
         <CardSection>
-          <Picker>
+          <Picker
+            selectedValue={this.props.shift}
+            onValueChange={day =>
+              this.props.employeeUpdate({ prop: "shift", value })
+            } //value:value is also correct
+          >
             <Picker.Item label="Monday" value="Monday" />
             <Picker.Item label="Tuesday" value="Tuesday" />
             <Picker.Item label="Wednesday" value="Wednesday" />
@@ -47,7 +52,7 @@ class EmployeeCreate extends Component {
   }
 }
 const mapStateToProps = state => {
-  const { name, phone, shift } = state.employeeForm;
+  const { name, phone, shift } = state.employeeForm; //This is registered in reducers/index.js
   return { name, phone, shift };
 };
 export default connect(
